@@ -1,5 +1,14 @@
 # Legnext for Hermes
 
+Install on a Hermes install that is already set up and working:
+
+```bash
+hermes plugins install alt3rmann/hermes-plugin-legnext --no-enable
+hermes plugins enable legnext
+```
+
+Then add `LEGNEXT_API_KEY` to the file reported by `hermes config env-path` and verify with the free `mj_balance` tool. Russian operator guide: [CUSTOMER_GUIDE_RU.md](CUSTOMER_GUIDE_RU.md).
+
 Four tools: `mj_balance` (free), `mj_imagine` (one paid diffusion submission), `mj_job` (resume/poll/download), and `mj_action` (paid upscale/variation/reroll). The Legnext API is unofficial. Submit requires `LEGNEXT_API_KEY` in the active Hermes profile's `.env`; job lookups require only the private UUID (treat it as a capability token).
 
 Configure optional settings under `plugins.entries.legnext.settings`: `output_dir` (default `<HERMES_HOME>/legnext-output`), `poll_interval` (default 5 seconds), `default_timeout` (600 seconds), and `default_version` (default `8.2`; when set empty the Legnext API falls back to v7, not the newest version). An explicit `--v`/`--niji` in the prompt wins over the `version` argument, which wins over this setting. Use Hermes config commands, not manual config.yaml edits.
