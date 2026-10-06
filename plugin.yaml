@@ -1,0 +1,21 @@
+name: legnext
+version: 0.1.0
+manifest_version: 2
+api_version: 1
+kind: standalone
+license: MIT
+homepage: https://legnext.ai/
+author: alt3rmann
+tags: [midjourney, image-generation, legnext]
+provides_tools: [mj_imagine, mj_job, mj_action, mj_balance]
+description: 'Legnext (unofficial Midjourney REST API) tools for Hermes: submit a task, poll to a terminal state, download the result to durable local storage.'
+requires_env:
+  - name: LEGNEXT_API_KEY
+    description: 'API key from the Legnext dashboard'
+    url: 'https://legnext.ai/dashboard'
+    secret: true
+config_schema:
+  output_dir: {type: str, default: '', label: 'Output directory', description: 'Where completed media is saved. Empty = <HERMES_HOME>/legnext-output'}
+  poll_interval: {type: float, default: 5.0, description: 'Seconds between status polls'}
+  default_timeout: {type: int, default: 600, description: 'Default bounded wait in seconds'}
+  default_version: {type: str, default: '8.2', description: 'Midjourney version flag appended when the prompt has none, e.g. 8.2 or "niji 6". IMPORTANT: when empty the Legnext API falls back to v7, not the newest version — it never injects --v for you.'}
