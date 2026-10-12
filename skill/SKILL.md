@@ -12,7 +12,7 @@ metadata:
 # Legnext: Midjourney через REST в Hermes
 
 Плагин `~/.hermes/plugins/legnext/` даёт 4 инструмента: `mj_imagine`,
-`mj_job`, `mj_action`, `mj_balance`. Ключ `LEGNEXT_API_KEY` в `~/.hermes/.env`.
+`mj_job`, `mj_action`, `mj_balance`. Ключ `LEGNEXT_API_KEY` хранится в файле секретов профиля (путь даёт `hermes config env-path`).
 
 ## When to Use
 
@@ -181,8 +181,9 @@ BYOK: $20/мес из кредитов, fast-image задачи идут на с
 - **Плагины opt-in.** После создания файлов нужен
   `hermes plugins enable <name>`, иначе инструментов не будет.
   Проверка статуса: `hermes plugins list --plain --no-bundled`.
-- **Ключ только через `agent.secret_scope.get_secret`**, не `os.environ`:
-  один процесс обслуживает несколько профилей, env утечёт чужой секрет.
+- **Ключ только через `agent.secret_scope.get_secret`**, не через переменные
+  окружения процесса: один процесс обслуживает несколько профилей, и env
+  отдал бы чужой секрет.
   Импорт ленивый, внутри функции, с fallback на env если Hermes не в path.
 - **Пути через `hermes_constants.get_hermes_home()`**, никогда не `~/.hermes`.
 - Handler: `def h(args: dict, **kwargs) -> str`, ВСЕГДА json.dumps,
