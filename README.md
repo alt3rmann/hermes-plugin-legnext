@@ -7,7 +7,7 @@ hermes plugins install alt3rmann/hermes-plugin-legnext --no-enable
 hermes plugins enable legnext
 ```
 
-Then add `LEGNEXT_API_KEY` to the file reported by `hermes config env-path` and verify with the free `mj_balance` tool. Russian operator guide: [CUSTOMER_GUIDE_RU.md](CUSTOMER_GUIDE_RU.md).
+Then add `LEGNEXT_API_KEY` to the file reported by `hermes config env-path` and verify with the free `mj_balance` tool. Step-by-step setup in Russian: [INSTALL_RU.md](INSTALL_RU.md). Operator guide: [CUSTOMER_GUIDE_RU.md](CUSTOMER_GUIDE_RU.md).
 
 Four tools: `mj_balance` (free), `mj_imagine` (one paid diffusion submission), `mj_job` (resume/poll/download), and `mj_action` (paid upscale/variation/reroll). The Legnext API is unofficial. Submit requires `LEGNEXT_API_KEY` in the active Hermes profile's `.env`; job lookups require only the private UUID (treat it as a capability token).
 
